@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"maps"
 	"math"
 	"net"
 	"net/http"
@@ -1204,9 +1205,7 @@ func (r runOptions) Copy() runOptions {
 	var opts map[string]any
 	if r.Options != nil {
 		opts = make(map[string]any, len(r.Options))
-		for k, v := range r.Options {
-			opts[k] = v
-		}
+		maps.Copy(opts, r.Options)
 	}
 
 	var think *api.ThinkValue

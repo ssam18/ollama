@@ -33,7 +33,7 @@ func (r registryChallenge) URL() (*url.URL, error) {
 
 	values := redirectURL.Query()
 	values.Add("service", r.Service)
-	for _, s := range strings.Split(r.Scope, " ") {
+	for s := range strings.SplitSeq(r.Scope, " ") {
 		values.Add("scope", s)
 	}
 

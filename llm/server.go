@@ -846,14 +846,7 @@ nextOperation:
 func uniqueDeviceIDs(gpuLayers ml.GPULayersList) []ml.DeviceID {
 	devices := []ml.DeviceID{}
 	for _, layer := range gpuLayers {
-		new := true
-		for _, ID := range devices {
-			if layer.DeviceID == ID {
-				new = false
-				break
-			}
-		}
-		if new {
+		if !slices.Contains(devices, layer.DeviceID) {
 			devices = append(devices, layer.DeviceID)
 		}
 	}
