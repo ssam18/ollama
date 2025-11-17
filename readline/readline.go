@@ -133,9 +133,10 @@ func (i *Instance) Readline() (string, error) {
 
 					code += string(r)
 				}
-				if code == CharBracketedPasteStart {
+				switch code {
+				case CharBracketedPasteStart:
 					i.Pasting = true
-				} else if code == CharBracketedPasteEnd {
+				case CharBracketedPasteEnd:
 					i.Pasting = false
 				}
 			case KeyDel:
